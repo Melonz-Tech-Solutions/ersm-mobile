@@ -111,7 +111,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       'latitude': _locationData.latitude,
       'longitude': _locationData.longitude,
       'status': 'PENDING',
-      'valid_id': "data:image/png;base64,${widget.image}"
+      // 'valid_id': "data:image/png;base64,${widget.image}"
     };
     if (_middlenameController.text.isNotEmpty)
       requestBody.addAll({'middle_name': _middlenameController.text});

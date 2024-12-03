@@ -8,6 +8,7 @@ import 'package:zamboangaemergency/default/config.dart';
 import 'package:zamboangaemergency/default/firebase_settings.dart';
 import 'package:zamboangaemergency/default/http.dart';
 import 'package:zamboangaemergency/mobile_number.dart';
+import 'package:zamboangaemergency/registration.dart';
 import 'main_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -468,7 +469,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                                 context,
                                                 PageTransition(
                                                   type: PageTransitionType.fade,
-                                                  child: MobileNumberScreen(),
+                                                  child: RegistrationScreen(),
                                                 ));
                                           },
                                           child: Text(
