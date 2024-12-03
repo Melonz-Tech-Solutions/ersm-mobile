@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "223242813279",
+    "project_id": "zamboanga-emergency-response",
+    "storage_bucket": "zamboanga-emergency-response.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223242813279:android:9ccc510472d88b8db340ea",
+        "android_client_info": {
+          "package_name": "app.dreamers.zamboangarescue"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "223242813279-1enlbut19fnj9lgofh6cbbshn3r6asqn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "app.dreamers.zamboangarescue",
+            "certificate_hash": "22d9b55ab09fafa6985743e8467dd421f39e9ff9"
+          }
+        },
+        {
+          "client_id": "223242813279-s12v517fnsekfgfrovarfn525n2g1baf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTLX2YP3SG2tdiEGM05H7BspzICk3v8Kw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "223242813279-s12v517fnsekfgfrovarfn525n2g1baf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
