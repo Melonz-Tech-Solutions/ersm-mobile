@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="app.dreamers.zamboangarescue">
     <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="Salvavida"
         android:icon="@mipmap/launcher_icon">
@@ -41,7 +42,8 @@
        <!-- End Firebase Configs -->
 
        <meta-data android:name="com.google.android.geo.API_KEY"
-           android:value="AIzaSyBK1D2wTjbYuR5fCmvq5FJj-lwOR0uLPjs"/>
+           android:value="AIzaSyCxoOo7lNMaJJstAqdGZVsfjZa_BV0uHeM"/>
+           <!-- AIzaSyCxoOo7lNMaJJstAqdGZVsfjZa_BV0uHeM -->
 <!--        AIzaSyDZjTjCjw4Q2gwZkWxrRLeGFH8am2YvSwc -->
     </application>
 </manifest>

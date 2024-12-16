@@ -11,7 +11,8 @@ class Http {
   SharedPreferences _sharedPreferences;
   // String ip = '192.168.68.102';
   // String ip = '134.209.155.217';
-  String ip = 'zamboangarescue.org';
+  // String ip = 'zamboangarescue.org';
+  String ip = '10.0.2.2'; // local 127.0.0.1
   final String url;
   final dynamic body;
 
@@ -106,11 +107,7 @@ class Http {
     dynamic _response;
     try {
       await http.post(
-          Uri(
-              scheme: 'https',
-              host: ip,
-              // port: 8000,
-              path: '/api/v1/$url'),
+          Uri(scheme: 'http', host: ip, port: 8000, path: '/api/v1/$url'),
           body: json.encode(body),
           headers: {
             'Content-Type': 'application/json',

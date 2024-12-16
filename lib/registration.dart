@@ -28,12 +28,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   TextEditingController _middlenameController = TextEditingController();
   TextEditingController _lastnameController = TextEditingController();
   TextEditingController _usernameController = TextEditingController();
+  TextEditingController _contactNoController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _addressController = TextEditingController();
 
   FocusNode _middlenameFocus = FocusNode();
   FocusNode _lastnameFocus = FocusNode();
   FocusNode _usernameFocus = FocusNode();
+  FocusNode _contactNoFocus = FocusNode();
   FocusNode _passwordFocus = FocusNode();
   FocusNode _addressFocus = FocusNode();
   bool _hidePassword = true;
@@ -78,6 +80,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         _lastnameController.text.isNotEmpty &&
         _usernameController.text.isNotEmpty &&
         _passwordController.text.isNotEmpty &&
+        _contactNoController.text.isNotEmpty &&
         _addressController.text.isNotEmpty) {
       _register();
     } else {
@@ -104,7 +107,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     Map requestBody = {
       'first_name': _firstnameController.text,
       'last_name': _lastnameController.text,
-      'contact_number': widget.number,
+      // 'contact_number': widget.number, // if using OTP
+      'contact_number': _contactNoController.text,
       'username': _usernameController.text,
       'password': _passwordController.text,
       'address': _addressController.text,
@@ -401,6 +405,53 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide.none),
                                   hintText: 'Username',
+                                  hintStyle: TextStyle(
+                                      fontSize:
+                                          Config.title * Config.textMultiplier),
+                                ),
+                                style: TextStyle(
+                                    fontSize:
+                                        Config.title * Config.textMultiplier),
+                              ))),
+                      Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'Contact No',
+                            textScaleFactor: .8,
+                            style: TextStyle(
+                                fontSize: Config.title * Config.textMultiplier),
+                          )),
+                      Container(
+                          height: (DeviceUtil.isTablet ? 5 : 6) *
+                              Config.heightMultiplier,
+                          margin: EdgeInsets.only(
+                              top: 1 * Config.heightMultiplier,
+                              bottom: 1 * Config.heightMultiplier),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 2 * Config.widthMultiplier),
+                          alignment: Alignment.centerLeft,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(
+                                  (DeviceUtil.isTablet ? 2 : 3) *
+                                      Config.widthMultiplier)),
+                              border: Border.all(color: Colors.black)),
+                          child: MediaQuery(
+                              data: MediaQuery.of(context)
+                                  .copyWith(textScaleFactor: .8),
+                              child: TextFormField(
+                                controller: _contactNoController,
+                                focusNode: _contactNoFocus,
+                                keyboardType: TextInputType.number,
+                                onFieldSubmitted: (string) {
+                                  FocusScope.of(context)
+                                      .requestFocus(_passwordFocus);
+                                },
+                                textInputAction: TextInputAction.next,
+                                decoration: InputDecoration(
+                                  isDense: true,
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide.none),
+                                  hintText: 'Contact No.',
                                   hintStyle: TextStyle(
                                       fontSize:
                                           Config.title * Config.textMultiplier),
