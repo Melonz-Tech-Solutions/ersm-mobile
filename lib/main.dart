@@ -24,47 +24,47 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Initialize SharedPreferences for Web
-  Future<void> initializeSharedPreferences() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+  // Future<void> initializeSharedPreferences() async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    if (!prefs.containsKey('responder_types')) {
-      // Define default responder types
-      List<Map<String, dynamic>> responderTypes = [
-        {
-          'id': 1,
-          'name': 'Firefighter',
-          'description': 'Responds to fire emergencies',
-          'map_icon': 'fire_icon.png',
-          'nav_icon': 'fire_nav.png',
-        },
-        {
-          'id': 2,
-          'name': 'Police',
-          'description': 'Responds to law enforcement emergencies',
-          'map_icon': 'police_icon.png',
-          'nav_icon': 'police_nav.png',
-        },
-      ];
+  //   if (!prefs.containsKey('responder_types')) {
+  //     // Define default responder types
+  //     List<Map<String, dynamic>> responderTypes = [
+  //       {
+  //         'id': 1,
+  //         'name': 'Firefighter',
+  //         'description': 'Responds to fire emergencies',
+  //         'map_icon': 'fire_icon.png',
+  //         'nav_icon': 'fire_nav.png',
+  //       },
+  //       {
+  //         'id': 2,
+  //         'name': 'Police',
+  //         'description': 'Responds to law enforcement emergencies',
+  //         'map_icon': 'police_icon.png',
+  //         'nav_icon': 'police_nav.png',
+  //       },
+  //     ];
 
-      // Store responder types as a JSON string
-      prefs.setString('responder_types', jsonEncode(responderTypes));
-    }
-  }
+  //     // Store responder types as a JSON string
+  //     prefs.setString('responder_types', jsonEncode(responderTypes));
+  //   }
+  // }
 
-  if (kIsWeb) {
-    await initializeSharedPreferences();
-  } else {
-    var databasesPath = await getDatabasesPath();
-    String path = join(databasesPath, 'zamboangarescue.db');
-    database = await openDatabase(
-      path,
-      onCreate: (db, version) {
-        return db.execute(
-            'CREATE TABLE responder_types(id INTEGER PRIMARY KEY, name STRING, description TEXT, map_icon TEXT, nav_icon TEXT)');
-      },
-      version: 1,
-    );
-  }
+  // if (kIsWeb) {
+  //   await initializeSharedPreferences();
+  // } else {
+  //   var databasesPath = await getDatabasesPath();
+  //   String path = join(databasesPath, 'zamboangarescue.db');
+  //   database = await openDatabase(
+  //     path,
+  //     onCreate: (db, version) {
+  //       return db.execute(
+  //           'CREATE TABLE responder_types(id INTEGER PRIMARY KEY, name STRING, description TEXT, map_icon TEXT, nav_icon TEXT)');
+  //     },
+  //     version: 1,
+  //   );
+  // }
 
   // var databasesPath = await getDatabasesPath();
   // String path = join(databasesPath, 'zamboangarescue.db');
