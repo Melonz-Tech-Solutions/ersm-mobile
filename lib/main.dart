@@ -145,7 +145,7 @@ void main() async {
     }
   });
 
-  await Firebase.initializeApp();
+  // await Firebase.initializeApp();
   runApp(
     DevicePreview(
       // White background looks professional in website embedding
