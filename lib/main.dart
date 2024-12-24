@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
@@ -11,22 +12,47 @@ import 'package:path/path.dart';
 import 'package:zamboangaemergency/default/config.dart';
 import 'package:zamboangaemergency/default/firebase_settings.dart';
 import 'package:zamboangaemergency/splashscreen.dart';
+import 'package:hive/hive.dart';
+
+import 'package:hive_flutter/hive_flutter.dart';
 
 Database database;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  var databasesPath = await getDatabasesPath();
-  String path = join(databasesPath, 'zamboangarescue.db');
-  database = await openDatabase(
-    path,
-    onCreate: (db, version) {
-      return db.execute(
-          'CREATE TABLE responder_types(id INTEGER PRIMARY KEY, name STRING, description TEXT, map_icon TEXT, nav_icon TEXT)');
-    },
-    version: 1,
-  );
+  // var databasesPath = await getDatabasesPath();
+  // String path = join(databasesPath, 'zamboangarescue.db');
+  // database = await openDatabase(
+  //   path,
+  //   onCreate: (db, version) {
+  //     return db.execute(
+  //         'CREATE TABLE responder_types(id INTEGER PRIMARY KEY, name STRING, description TEXT, map_icon TEXT, nav_icon TEXT)');
+  //   },
+  //   version: 1,
+  // );
+
+  if (kIsWeb) {
+    // Use Hive for web
+    await Hive.init('zamboangarescue');
+    var box = await Hive.openBox('zamboangarescue');
+    print('Web: Hive initialized');
+  } else {
+    // Use sqflite for mobile
+    var databasesPath = await getDatabasesPath();
+    String path = join(databasesPath, 'zamboangarescue.db');
+
+    database = await openDatabase(
+      path,
+      onCreate: (db, version) {
+        return db.execute(
+            'CREATE TABLE responder_types(id INTEGER PRIMARY KEY, name STRING, description TEXT, map_icon TEXT, nav_icon TEXT)');
+      },
+      version: 1,
+    );
+
+    print('Mobile: sqflite database initialized');
+  }
   // databaseFactory = databaseFactoryFfi;
   // var databasesPath = await databaseFactory.getDatabasesPath();
   // String path = join(databasesPath, 'zamboangarescue.db');
@@ -81,7 +107,7 @@ void main() async {
       backgroundColor: Colors.white,
 
       // Enable preview by default for web demo
-      enabled: true,
+      enabled: !kReleaseMode,
 
       // Start with Galaxy A50 as it's a common Android device
       defaultDevice: Devices.ios.iPhone13ProMax,
