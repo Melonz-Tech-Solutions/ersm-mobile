@@ -6,6 +6,7 @@ import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:path/path.dart';
 import 'package:zamboangaemergency/default/config.dart';
 import 'package:zamboangaemergency/default/firebase_settings.dart';
@@ -16,16 +17,21 @@ Database database;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  var databasesPath = await getDatabasesPath();
+  databaseFactory = databaseFactoryFfi;
+  var databasesPath = await databaseFactory.getDatabasesPath();
   String path = join(databasesPath, 'zamboangarescue.db');
-  database = await openDatabase(
+
+  database = await databaseFactory.openDatabase(
     path,
-    onCreate: (db, version) {
-      return db.execute(
-          'CREATE TABLE responder_types(id INTEGER PRIMARY KEY, name STRING, description TEXT, map_icon TEXT, nav_icon TEXT)');
-    },
-    version: 1,
+    options: OpenDatabaseOptions(
+      onCreate: (db, version) {
+        return db.execute(
+            'CREATE TABLE responder_types(id INTEGER PRIMARY KEY, name STRING, description TEXT, map_icon TEXT, nav_icon TEXT)');
+      },
+      version: 1,
+    ),
   );
+
   AwesomeNotifications().initialize(
       // set the icon to null if you want to use the default app icon
       'resource://mipmap/launcher_icon',
