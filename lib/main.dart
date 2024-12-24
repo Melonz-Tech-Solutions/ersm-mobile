@@ -17,20 +17,30 @@ Database database;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  databaseFactory = databaseFactoryFfi;
-  var databasesPath = await databaseFactory.getDatabasesPath();
+  var databasesPath = await getDatabasesPath();
   String path = join(databasesPath, 'zamboangarescue.db');
-
-  database = await databaseFactory.openDatabase(
+  database = await openDatabase(
     path,
-    options: OpenDatabaseOptions(
-      onCreate: (db, version) {
-        return db.execute(
-            'CREATE TABLE responder_types(id INTEGER PRIMARY KEY, name STRING, description TEXT, map_icon TEXT, nav_icon TEXT)');
-      },
-      version: 1,
-    ),
+    onCreate: (db, version) {
+      return db.execute(
+          'CREATE TABLE responder_types(id INTEGER PRIMARY KEY, name STRING, description TEXT, map_icon TEXT, nav_icon TEXT)');
+    },
+    version: 1,
   );
+  // databaseFactory = databaseFactoryFfi;
+  // var databasesPath = await databaseFactory.getDatabasesPath();
+  // String path = join(databasesPath, 'zamboangarescue.db');
+
+  // database = await databaseFactory.openDatabase(
+  //   path,
+  //   options: OpenDatabaseOptions(
+  //     onCreate: (db, version) {
+  //       return db.execute(
+  //           'CREATE TABLE responder_types(id INTEGER PRIMARY KEY, name STRING, description TEXT, map_icon TEXT, nav_icon TEXT)');
+  //     },
+  //     version: 1,
+  //   ),
+  // );
 
   AwesomeNotifications().initialize(
       // set the icon to null if you want to use the default app icon
