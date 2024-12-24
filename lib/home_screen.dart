@@ -21,7 +21,6 @@ import 'package:location/location.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:zamboangaemergency/default/config.dart';
 import 'package:zamboangaemergency/default/http.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
