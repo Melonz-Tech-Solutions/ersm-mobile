@@ -21,6 +21,22 @@ Database database;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  if (kIsWeb) {
+    databaseFactory = databaseFactoryFfi;
+    database = await openDatabase('zamboangarescue.db');
+  } else {
+    var databasesPath = await getDatabasesPath();
+    String path = join(databasesPath, 'zamboangarescue.db');
+    database = await openDatabase(
+      path,
+      onCreate: (db, version) {
+        return db.execute(
+            'CREATE TABLE responder_types(id INTEGER PRIMARY KEY, name STRING, description TEXT, map_icon TEXT, nav_icon TEXT)');
+      },
+      version: 1,
+    );
+  }
+
   // var databasesPath = await getDatabasesPath();
   // String path = join(databasesPath, 'zamboangarescue.db');
   // database = await openDatabase(
@@ -32,27 +48,27 @@ void main() async {
   //   version: 1,
   // );
 
-  if (kIsWeb) {
-    // Use Hive for web
-    await Hive.init('zamboangarescue');
-    var box = await Hive.openBox('zamboangarescue');
-    print('Web: Hive initialized');
-  } else {
-    // Use sqflite for mobile
-    var databasesPath = await getDatabasesPath();
-    String path = join(databasesPath, 'zamboangarescue.db');
+  // if (kIsWeb) {
+  //   // Use Hive for web
+  //   await Hive.init('zamboangarescue');
+  //   var box = await Hive.openBox('zamboangarescue');
+  //   print('Web: Hive initialized');
+  // } else {
+  //   // Use sqflite for mobile
+  //   var databasesPath = await getDatabasesPath();
+  //   String path = join(databasesPath, 'zamboangarescue.db');
 
-    database = await openDatabase(
-      path,
-      onCreate: (db, version) {
-        return db.execute(
-            'CREATE TABLE responder_types(id INTEGER PRIMARY KEY, name STRING, description TEXT, map_icon TEXT, nav_icon TEXT)');
-      },
-      version: 1,
-    );
+  //   database = await openDatabase(
+  //     path,
+  //     onCreate: (db, version) {
+  //       return db.execute(
+  //           'CREATE TABLE responder_types(id INTEGER PRIMARY KEY, name STRING, description TEXT, map_icon TEXT, nav_icon TEXT)');
+  //     },
+  //     version: 1,
+  //   );
 
-    print('Mobile: sqflite database initialized');
-  }
+  //   print('Mobile: sqflite database initialized');
+  // }
   // databaseFactory = databaseFactoryFfi;
   // var databasesPath = await databaseFactory.getDatabasesPath();
   // String path = join(databasesPath, 'zamboangarescue.db');
