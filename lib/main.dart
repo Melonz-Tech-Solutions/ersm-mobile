@@ -1,4 +1,5 @@
 // @dart=2.9
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:awesome_notifications/awesome_notifications.dart';
@@ -13,6 +14,7 @@ import 'package:zamboangaemergency/default/config.dart';
 import 'package:zamboangaemergency/default/firebase_settings.dart';
 import 'package:zamboangaemergency/splashscreen.dart';
 import 'package:hive/hive.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -21,9 +23,36 @@ Database database;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  // Initialize SharedPreferences for Web
+  Future<void> initializeSharedPreferences() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    if (!prefs.containsKey('responder_types')) {
+      // Define default responder types
+      List<Map<String, dynamic>> responderTypes = [
+        {
+          'id': 1,
+          'name': 'Firefighter',
+          'description': 'Responds to fire emergencies',
+          'map_icon': 'fire_icon.png',
+          'nav_icon': 'fire_nav.png',
+        },
+        {
+          'id': 2,
+          'name': 'Police',
+          'description': 'Responds to law enforcement emergencies',
+          'map_icon': 'police_icon.png',
+          'nav_icon': 'police_nav.png',
+        },
+      ];
+
+      // Store responder types as a JSON string
+      prefs.setString('responder_types', jsonEncode(responderTypes));
+    }
+  }
+
   if (kIsWeb) {
-    databaseFactory = databaseFactoryFfi;
-    database = await openDatabase('zamboangarescue.db');
+    await initializeSharedPreferences();
   } else {
     var databasesPath = await getDatabasesPath();
     String path = join(databasesPath, 'zamboangarescue.db');
