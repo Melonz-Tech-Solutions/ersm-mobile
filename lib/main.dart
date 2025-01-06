@@ -106,7 +106,7 @@ void main() async {
   await Firebase.initializeApp();
   runApp(
     DevicePreview(
-      enabled: !kReleaseMode,
+      enabled: false,
       tools: [
         DeviceSection(
           model: true,
