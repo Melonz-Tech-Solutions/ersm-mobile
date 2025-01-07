@@ -108,7 +108,11 @@ class Http {
     dynamic _response;
     try {
       await http.post(
-          Uri(scheme: 'http', host: ip, port: 8000, path: '/api/v1/$url'),
+          Uri(
+              scheme: 'https',
+              host: ip,
+              // port: 8000,
+              path: '/api/v1/$url'),
           body: json.encode(body),
           headers: {
             'Content-Type': 'application/json',
