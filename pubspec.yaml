@@ -90,6 +90,7 @@ flutter:
     - assets/images/
     - assets/images/disaster_preparedness/
     - assets/images/first_aid/
+    - assets/ca/lets-encrypt-r3.pem
     # - assets/icons/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

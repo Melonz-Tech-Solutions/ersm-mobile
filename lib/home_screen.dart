@@ -520,12 +520,12 @@ class HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  _createEmergency(String name) async {
+  _createEmergency(String name, dynamic id) async {
     Http().showLoadingOverlay(context);
     dynamic response = await Http(
         url: 'residents/${_sharedPreferences.getInt('role-id')}/incidents',
         body: {
-          // 'incident_type_id': id,
+          'incident_type_id': id ?? 1,
           'type': name,
           'latitude': _locationData.latitude,
           'longitude': _locationData.longitude,
@@ -929,7 +929,8 @@ class HomeScreenState extends State<HomeScreen> {
                                                     Config.appColor)),
                                         onPressed: () {
                                           _createEmergency(
-                                              responderType['name']);
+                                              responderType['name'],
+                                              responderType['id']);
                                         },
                                         child: Row(
                                           children: [
