@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:223242813279:android:9ccc510472d88b8db340ea",
         "android_client_info": {
-          "package_name": "app.dreamers.zamboangarescue"
+          "package_name": "app.itmonster.zamboangarescue"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "223242813279-1enlbut19fnj9lgofh6cbbshn3r6asqn.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "app.dreamers.zamboangarescue",
+            "package_name": "app.itmonster.zamboangarescue",
             "certificate_hash": "22d9b55ab09fafa6985743e8467dd421f39e9ff9"
           }
         },

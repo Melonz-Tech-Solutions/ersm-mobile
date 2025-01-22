@@ -1,4 +1,4 @@
-package app.dreamers.zamboangarescue
+package app.itmonster.zamboangarescue
 
 import io.flutter.embedding.android.FlutterActivity
 
