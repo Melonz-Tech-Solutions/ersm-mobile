@@ -498,34 +498,23 @@ class _LoginScreenState extends State<LoginScreen> {
                     Align(
                         alignment: Alignment.bottomCenter,
                         child: Container(
-                            height: 4 * Config.heightMultiplier,
-                            width: double.infinity,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'Made with ',
-                                  textScaleFactor: 0.8,
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: Config.subtitle *
-                                          Config.textMultiplier),
-                                ),
-                                Icon(
-                                  Icons.favorite,
-                                  color: Config.appColor,
-                                  size: 4 * Config.imageSizeMultiplier,
-                                ),
-                                Text(
-                                  ' by Dreame.rs IT Solutions Inc.',
-                                  textScaleFactor: 0.8,
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: Config.subtitle *
-                                          Config.textMultiplier),
-                                ),
-                              ],
-                            )))
+                          height: 4 * Config.heightMultiplier,
+                          width: double.infinity,
+                          child: Center(
+                            child: Text(
+                              'This app is not government affiliated. \n Emergency data sourced from ZCDRRMO, Feb 2025.',
+                              textScaleFactor: 0.8,
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize:
+                                      Config.subtitle * Config.textMultiplier),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        )),
+                    SizedBox(
+                      height: 10,
+                    )
                   ]))),
         ));
   }
