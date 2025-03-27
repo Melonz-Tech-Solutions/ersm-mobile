@@ -11,7 +11,7 @@ import 'package:zamboangaemergency/login_screen.dart';
 import 'package:zamboangaemergency/notifications.dart';
 
 import 'about_us.dart';
-import 'default/firebase_settings.dart';
+// import 'default/firebase_settings.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -114,7 +114,7 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   _logout() async {
-    FirebaseSettings().revokeToken();
+    // FirebaseSettings().revokeToken();
     Http().logout();
     SharedPreferences _sharedPreference = await SharedPreferences.getInstance();
     _sharedPreference.clear();

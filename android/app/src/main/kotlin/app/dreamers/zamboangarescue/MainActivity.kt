@@ -1,5 +1,4 @@
-package app.itmonster.zamboangarescue
-
+package com.itmonster.zamboangarescueapp
 import io.flutter.embedding.android.FlutterActivity
 
 class MainActivity: FlutterActivity() {

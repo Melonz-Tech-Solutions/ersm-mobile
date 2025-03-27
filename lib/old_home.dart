@@ -1015,12 +1015,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         Container(
                           child: AvatarGlow(
                             glowColor: Config.appColor.withOpacity(0.8),
-                            endRadius: (DeviceUtil.isTablet ? 20 : 46) *
-                                Config.imageSizeMultiplier,
+                            // endRadius: (DeviceUtil.isTablet ? 20 : 46) *
+                            // Config.imageSizeMultiplier,
                             duration: Duration(milliseconds: 2000),
                             repeat: true,
-                            showTwoGlows: true,
-                            repeatPauseDuration: Duration(milliseconds: 100),
+                            // showTwoGlows: true,
+                            // repeatPauseDuration: Duration(milliseconds: 100),
                             child: ButtonTheme(
                                 height: (DeviceUtil.isTablet ? 20 : 46) *
                                     Config.imageSizeMultiplier,

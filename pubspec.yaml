@@ -32,7 +32,6 @@ dependencies:
   geolocator:
   flutter_spinkit:
   firebase_messaging:
-  awesome_notifications:
   google_maps_flutter:
   firebase_core:
   rxdart:
@@ -73,6 +72,12 @@ flutter_icons:
   android: "launcher_icon"
   ios: true
   image_path: "assets/images/logo.png"
+
+dependency_overrides:
+  dart_config:
+    git:
+      url: https://github.com/SPodjasek/dart_config.git
+      ref: fix_dart21
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

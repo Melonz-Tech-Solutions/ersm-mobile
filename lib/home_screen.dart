@@ -6,7 +6,7 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'package:avatar_glow/avatar_glow.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
+// import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -144,7 +144,7 @@ class HomeScreenState extends State<HomeScreen> {
     }
 
     if (_loggedIn) {
-      _initFirebase();
+      // _initFirebase();
       await _getLocation(false);
       Navigator.pop(context);
       await _checkActiveIncident(false);
@@ -512,13 +512,13 @@ class HomeScreenState extends State<HomeScreen> {
     return;
   }
 
-  _initFirebase() {
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      if (message.data['notif'] == 'false') {
-        _checkActiveIncident(false);
-      }
-    });
-  }
+  // _initFirebase() {
+  //   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+  //     if (message.data['notif'] == 'false') {
+  //       _checkActiveIncident(false);
+  //     }
+  //   });
+  // }
 
   _createEmergency(String name, dynamic id) async {
     Http().showLoadingOverlay(context);
@@ -1123,12 +1123,12 @@ class HomeScreenState extends State<HomeScreen> {
                         Container(
                           child: AvatarGlow(
                             glowColor: Config.appColor.withOpacity(0.8),
-                            endRadius: (DeviceUtil.isTablet ? 8 : 24) *
-                                Config.heightMultiplier,
+                            // endRadius: (DeviceUtil.isTablet ? 8 : 24) *
+                            //     Config.heightMultiplier,
                             duration: Duration(milliseconds: 2000),
                             repeat: true,
-                            showTwoGlows: true,
-                            repeatPauseDuration: Duration(milliseconds: 100),
+                            // showTwoGlows: true,
+                            // repeatPauseDuration: Duration(milliseconds: 100),
                             child: ButtonTheme(
                                 height: (DeviceUtil.isTablet ? 20 : 46) *
                                     Config.imageSizeMultiplier,

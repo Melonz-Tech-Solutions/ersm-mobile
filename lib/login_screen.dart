@@ -5,7 +5,7 @@ import 'package:http/http.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zamboangaemergency/default/config.dart';
-import 'package:zamboangaemergency/default/firebase_settings.dart';
+// import 'package:zamboangaemergency/default/firebase_settings.dart';
 import 'package:zamboangaemergency/default/http.dart';
 import 'package:zamboangaemergency/mobile_number.dart';
 import 'package:zamboangaemergency/registration.dart';
@@ -121,7 +121,7 @@ class _LoginScreenState extends State<LoginScreen> {
             _sharedPreferences.setString('status', body['profile']['status']);
             _sharedPreferences.setInt('role-id', body['profile']['id']);
             _sharedPreferences.setString('role', 'resident');
-            FirebaseSettings().updateToken();
+            // FirebaseSettings().updateToken();
 
             Navigator.pushReplacement(
                 context,
