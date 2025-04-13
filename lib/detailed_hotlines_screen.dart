@@ -2,10 +2,13 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:telephony/telephony.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:zamboangaemergency/default/config.dart';
+import 'package:zamboangaemergency/hotlines_screen.dart';
+import 'package:zamboangaemergency/main_screen.dart';
 
 class DetailedHotlinesScreen extends StatefulWidget {
   final String details;
@@ -270,6 +273,24 @@ class _DetailedHotlinesScreenState extends State<DetailedHotlinesScreen> {
                   padding: EdgeInsets.symmetric(
                       vertical: 2 * Config.heightMultiplier),
                   child: Column(children: [
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: IconButton(
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                                context,
+                                PageTransition(
+                                  type: PageTransitionType.fade,
+                                  child: MainScreen(
+                                    initialPage: 3,
+                                  ),
+                                ));
+                          },
+                          icon: Icon(
+                            Icons.arrow_back_ios_new_rounded,
+                            color: Config.appColor,
+                          )),
+                    ),
                     Align(
                         alignment: Alignment.center,
                         child: Padding(

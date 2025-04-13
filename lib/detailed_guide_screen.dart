@@ -1,8 +1,10 @@
 // @dart=2.9
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:zamboangaemergency/default/config.dart';
+import 'package:zamboangaemergency/main_screen.dart';
 
 class DetailedGuideScreen extends StatefulWidget {
   final dynamic details;
@@ -32,6 +34,24 @@ class _DetailedGuideScreenState extends State<DetailedGuideScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: IconButton(
+                            onPressed: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  PageTransition(
+                                    type: PageTransitionType.fade,
+                                    child: MainScreen(
+                                      initialPage: 2,
+                                    ),
+                                  ));
+                            },
+                            icon: Icon(
+                              Icons.arrow_back_ios_new_rounded,
+                              color: Config.appColor,
+                            )),
+                      ),
                       Text(
                         widget.details['text'].toString().toUpperCase(),
                         textScaleFactor: .8,

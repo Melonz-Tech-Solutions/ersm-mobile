@@ -1153,63 +1153,71 @@ class HomeScreenState extends State<HomeScreen> {
                                     ))),
                           ),
                         ),
-                      if (_image == null && _imageFile == null)
-                        Text(
-                          'You may choose to upload or take image of the incident to report while waiting for the responder to arrive',
-                          textScaleFactor: .8,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: Config.title * Config.textMultiplier,
-                              color: Colors.black),
-                        ),
-                      if (_image == null && _imageFile == null)
-                        TextButton(
-                            onPressed: () async {
-                              _showChoiceDialog();
-                            },
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                      alignment: Alignment.centerLeft,
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal:
-                                              2 * Config.widthMultiplier),
-                                      height: 5 * Config.heightMultiplier,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(
-                                                  2 * Config.widthMultiplier),
-                                              bottomLeft: Radius.circular(
-                                                  2 * Config.widthMultiplier)),
-                                          border: Border.all(
-                                              color: Config.appColor)),
-                                      child: Text(
-                                        'Choose Image',
-                                        textScaleFactor: 0.8,
-                                        style: TextStyle(
-                                            fontSize: Config.title *
-                                                Config.textMultiplier),
-                                      )),
-                                  Container(
-                                    alignment: Alignment.centerLeft,
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 2 * Config.widthMultiplier),
-                                    height: 5 * Config.heightMultiplier,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.only(
-                                            topRight: Radius.circular(
-                                                2 * Config.widthMultiplier),
-                                            bottomRight: Radius.circular(
-                                                2 * Config.widthMultiplier)),
-                                        border:
-                                            Border.all(color: Config.appColor)),
-                                    child: Icon(
-                                      Icons.image,
-                                      color: Config.appColor,
-                                    ),
-                                  )
-                                ])),
+                      Text(
+                        'Please wait for the nearest responder to arrive',
+                        textScaleFactor: .8,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: Config.title * Config.textMultiplier,
+                            color: Colors.black),
+                      ),
+                      // if (_image == null && _imageFile == null)
+                      //   Text(
+                      //     'You may choose to upload or take image of the incident to report while waiting for the responder to arrive',
+                      //     textScaleFactor: .8,
+                      //     textAlign: TextAlign.center,
+                      //     style: TextStyle(
+                      //         fontSize: Config.title * Config.textMultiplier,
+                      //         color: Colors.black),
+                      //   ),
+                      // if (_image == null && _imageFile == null)
+                      //   TextButton(
+                      //       onPressed: () async {
+                      //         // _showChoiceDialog();
+                      //       },
+                      //       child: Row(
+                      //           mainAxisAlignment: MainAxisAlignment.center,
+                      //           children: [
+                      //             Container(
+                      //                 alignment: Alignment.centerLeft,
+                      //                 padding: EdgeInsets.symmetric(
+                      //                     horizontal:
+                      //                         2 * Config.widthMultiplier),
+                      //                 height: 5 * Config.heightMultiplier,
+                      //                 decoration: BoxDecoration(
+                      //                     borderRadius: BorderRadius.only(
+                      //                         topLeft: Radius.circular(
+                      //                             2 * Config.widthMultiplier),
+                      //                         bottomLeft: Radius.circular(
+                      //                             2 * Config.widthMultiplier)),
+                      //                     border: Border.all(
+                      //                         color: Config.appColor)),
+                      //                 child: Text(
+                      //                   'Choose Image',
+                      //                   textScaleFactor: 0.8,
+                      //                   style: TextStyle(
+                      //                       fontSize: Config.title *
+                      //                           Config.textMultiplier),
+                      //                 )),
+                      //             Container(
+                      //               alignment: Alignment.centerLeft,
+                      //               padding: EdgeInsets.symmetric(
+                      //                   horizontal: 2 * Config.widthMultiplier),
+                      //               height: 5 * Config.heightMultiplier,
+                      //               decoration: BoxDecoration(
+                      //                   borderRadius: BorderRadius.only(
+                      //                       topRight: Radius.circular(
+                      //                           2 * Config.widthMultiplier),
+                      //                       bottomRight: Radius.circular(
+                      //                           2 * Config.widthMultiplier)),
+                      //                   border:
+                      //                       Border.all(color: Config.appColor)),
+                      //               child: Icon(
+                      //                 Icons.image,
+                      //                 color: Config.appColor,
+                      //               ),
+                      //             )
+                      //           ])),
                       if (_image != null && !_activeResponder)
                         Container(
                             margin: EdgeInsets.only(

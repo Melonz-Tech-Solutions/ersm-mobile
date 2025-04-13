@@ -14,12 +14,16 @@ import 'about_us.dart';
 // import 'default/firebase_settings.dart';
 
 class MainScreen extends StatefulWidget {
+  final int initialPage;
+
+  MainScreen({this.initialPage = 0});
+
   @override
   _MainScreenState createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<MainScreen> {
-  PageController _pageController = PageController(initialPage: 0);
+  PageController _pageController;
   int _page = 0;
   GlobalKey<ScaffoldMessengerState> _scaffoldKey = GlobalKey();
   var homeScreenPage = HomeScreen();
@@ -31,10 +35,11 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
+    _pageController = PageController(initialPage: widget.initialPage);
     _configure();
     _pageController.addListener(() {
       setState(() {
-        _page = _pageController.page?.toInt();
+        _page = widget.initialPage;
       });
     });
   }
@@ -173,15 +178,16 @@ class _MainScreenState extends State<MainScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Container(
-                                color:
-                                    _page == 0 ? Colors.white : Config.appColor,
+                                color: widget.initialPage == 0
+                                    ? Colors.white
+                                    : Config.appColor,
                                 height: (DeviceUtil.isTablet ? 6 : 8) *
                                     Config.heightMultiplier,
                                 width: (DeviceUtil.isTablet ? 14 : 16) *
                                     Config.widthMultiplier,
                                 child: IconButton(
                                     onPressed: () {
-                                      if (_page != 0)
+                                      if (widget.initialPage != 0)
                                         setState(() {
                                           _pageController.jumpToPage(0);
                                         });
@@ -189,13 +195,13 @@ class _MainScreenState extends State<MainScreen> {
                                     icon: Icon(
                                       Icons.home_rounded,
                                       size: 6 * Config.imageSizeMultiplier,
-                                      color: _page == 0
+                                      color: widget.initialPage == 0
                                           ? Config.appColor
                                           : Colors.white,
                                     ))),
                             if (_loggedIn)
                               Container(
-                                  color: _page == 1
+                                  color: _page == 1 || widget.initialPage == 1
                                       ? Colors.white
                                       : Config.appColor,
                                   height: (DeviceUtil.isTablet ? 6 : 8) *
@@ -217,8 +223,9 @@ class _MainScreenState extends State<MainScreen> {
                                             : Colors.white,
                                       ))),
                             Container(
-                                color:
-                                    _page == 2 ? Colors.white : Config.appColor,
+                                color: _page == 2 || widget.initialPage == 1
+                                    ? Colors.white
+                                    : Config.appColor,
                                 height: (DeviceUtil.isTablet ? 6 : 8) *
                                     Config.heightMultiplier,
                                 width: (DeviceUtil.isTablet ? 14 : 16) *
@@ -238,8 +245,9 @@ class _MainScreenState extends State<MainScreen> {
                                           : Colors.white,
                                     ))),
                             Container(
-                                color:
-                                    _page == 3 ? Colors.white : Config.appColor,
+                                color: _page == 3 || widget.initialPage == 1
+                                    ? Colors.white
+                                    : Config.appColor,
                                 height: (DeviceUtil.isTablet ? 6 : 8) *
                                     Config.heightMultiplier,
                                 width: (DeviceUtil.isTablet ? 14 : 16) *
@@ -259,8 +267,9 @@ class _MainScreenState extends State<MainScreen> {
                                           : Colors.white,
                                     ))),
                             Container(
-                                color:
-                                    _page == 4 ? Colors.white : Config.appColor,
+                                color: _page == 4 || widget.initialPage == 1
+                                    ? Colors.white
+                                    : Config.appColor,
                                 height: (DeviceUtil.isTablet ? 6 : 8) *
                                     Config.heightMultiplier,
                                 width: (DeviceUtil.isTablet ? 14 : 16) *

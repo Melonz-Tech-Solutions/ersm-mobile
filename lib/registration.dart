@@ -8,6 +8,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zamboangaemergency/default/config.dart';
 import 'package:zamboangaemergency/default/http.dart';
+import 'package:zamboangaemergency/main_screen.dart';
 import 'default/location.dart';
 import 'login_screen.dart';
 
@@ -185,6 +186,26 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: IconButton(
+                            onPressed: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  PageTransition(
+                                    type: PageTransitionType.fade,
+                                    child: MainScreen(),
+                                  ));
+                            },
+                            icon: Icon(
+                              Icons.arrow_back_ios_new_rounded,
+                              color: Config.appColor,
+                            )),
+                      ),
+                      SizedBox(
+                        height: (DeviceUtil.isTablet ? 3 : 4) *
+                            Config.heightMultiplier,
+                      ),
                       Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
